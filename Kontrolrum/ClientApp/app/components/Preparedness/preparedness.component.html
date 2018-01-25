@@ -1,0 +1,64 @@
+﻿<style>
+    .table-fixed tbody {
+        height: 147px;
+        overflow-y: scroll;
+        width: 48.3%;
+        position: absolute;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+    thead {
+        width: 100%;
+    }
+
+    .table-fixed thead tr th {
+        border-bottom: none;
+    }
+</style>
+<div id="preparedness-box">
+    <label id="preparedness-label">Beredskab</label><br />
+    <button class="btn btn-primary journal-preparedness-btns" [disabled]="isDisabled" (click)="btnAddPreparedness()" data-toggle="modal" data-target="#Modal1">
+        <span class="glyphicon glyphicon-plus"></span>
+        Tilføj
+    </button>
+
+    <button class="btn btn-danger journal-preparedness-btns" [disabled]="isDisabledRemove" (click)="btnRemovePreparedness()">
+        <span class="glyphicon glyphicon-remove"></span>
+        Fjern
+    </button>
+    
+    <table id="preparedness-table" class="table table-hover table-striped table-fixed">
+        <thead style="border-right: 30px solid lightgray;">
+            <tr>
+                <th class="col-xs-2">ID</th>
+                <th class="col-xs-3">Vogn-Nr</th>
+                <th class="col-xs-4">Status</th>
+                <th class="col-xs-1">Udrykningskode</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="clickableCells" *ngFor="let preparedness of preparednessManager.preparednesslist;
+                    let rowIndex = index" (dblclick)="openUpdateModal();" (click)="setClickedRow(rowIndex); getPreparedness(preparedness)" [class.active]="rowIndex == selectedRow">
+                <td class="col-xs-2">{{preparedness.id}}</td>
+                <td class="col-xs-3">{{preparedness.vehicle.name}}</td>
+                <td class="col-xs-4" *ngIf="preparedness.vehicle.status">{{preparedness.vehicle.status.meaning}}</td>
+                <td class="col-xs-4" *ngIf="!preparedness.vehicle.status"></td>
+                <td class="col-xs-5">{{preparedness.emergencyCode.code}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<preparednessModal-component #Modal1></preparednessModal-component>
+
+<!-- Hidden button to open the modal -->
+<button id="openModal" #openPreparednessUpdateModal [hidden]="true"
+        data-toggle="modal" data-target="#preparednessUpdateModal"></button>
+
+
+

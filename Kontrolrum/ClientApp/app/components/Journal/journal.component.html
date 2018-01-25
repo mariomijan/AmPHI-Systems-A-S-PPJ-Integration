@@ -1,0 +1,62 @@
+﻿<style>
+    .table-fixed tbody {
+        height: 147px;
+        overflow-y: scroll;
+        width: 48.3%;
+        position: absolute;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+    thead {
+        width: 100%;
+    }
+
+    .table-fixed thead tr th {
+        border-bottom: none;
+    }
+</style>
+<div id="journal-box">
+    <label id="journal-label">Journal</label><br />
+    <!--<button class="btn btn-danger journal-preparedness-btns" [disabled]="isDisabled" (click)="btnRemoveJournal()">
+        <span class="glyphicon glyphicon-remove"></span>
+        Fjern
+    </button>-->
+    <button class="btn btn-primary journal-preparedness-btns" [disabled]="isDisabled" (click)="AddJournalModal()" data-toggle="modal" data-target="#Modal">
+        <span class="glyphicon glyphicon-plus"></span>
+        Tilføj
+    </button>
+    <table id="journal-table" class="table table-hover table-striped table-fixed">
+        <thead style="border-right: 15px solid lightgray;">
+            <tr>
+                <th class="col-xs-1">ID</th>
+                <th class="col-xs-2">Cpr</th>
+                <th class="col-xs-3">Navn</th>
+                <th class="col-xs-3">Info</th>
+                <th class="col-xs-5">Modtagelse</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="clickableCells" *ngFor="let journal of journalManager.journallist;
+                    let rowIndex = index" (dblclick)="openUpdateModal();" (click)="setClickedRow(rowIndex); getJournal(journal)"
+                [class.active]="rowIndex == selectedRow">
+                <td class="col-xs-1">{{journal.id}}</td>
+                <td class="col-xs-2">{{journal.cpr}}</td>
+                <td class="col-xs-3">{{journal.name}}</td>
+                <td class="col-xs-3">{{journal.info}}</td>
+                <td class="col-xs-5" *ngIf="journal.reception">{{journal.reception.name}}</td>
+                <td class="col-xs-5" *ngIf="!journal.reception"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<journalModal-component #Modal></journalModal-component>
+
+<!-- Hidden button to open the modal -->
+<button id="openModal" #openModal [hidden]="true"
+        data-toggle="modal" data-target="#ModalUpdate"></button>
+

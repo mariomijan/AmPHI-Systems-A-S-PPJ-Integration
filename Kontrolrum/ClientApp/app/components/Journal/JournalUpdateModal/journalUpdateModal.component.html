@@ -1,0 +1,79 @@
+﻿<div class="modal fade" id="ModalUpdate" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-mg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Rediger journal</h4>
+            </div>
+            <div class="modal-body">
+                <label class="modal-labels">Hændelse-ID: {{incidentManager.incidentId}}</label>
+                <div id="modtagelse-DropDown">
+                    <label class="dropDownlabels" id="modtagelseModallbls">Vælg Modtagelse</label><br />
+                    <select #selectedReceptionId class="form-control" id="ModtagelseDropDown">
+                        <option *ngIf="theSelectedReception.id == null"></option>
+                        <option *ngFor="let reception of preparednessManager.receptionList" [selected]="reception.id == theSelectedReception.id" [value]="reception.id">
+                            {{reception.name}}
+                        </option>
+                    </select>
+                </div>
+                <table id="journalModal-table">
+                    <tr>
+                        <td>
+                            <label class="modal-labels">Cpr</label>
+                        </td>
+                        <td>
+                            <input #selectedCpr [value]="journal.cpr" class="form-control modal-textboxes" type="text" placeholder="Cpr" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="modal-labels">Fornavn</label>
+                        </td>
+                        <td>
+                            <input #selectedName [value]="journal.name" class="form-control modal-textboxes" type="text" placeholder="Fornavn" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="modal-labels">Mellemnavn</label>
+                        </td>
+                        <td>
+                            <input #selectedMiddleName [value]="journal.middleName" class="form-control modal-textboxes" type="text" placeholder="Mellemnavn" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="modal-labels">Efternavn</label>
+                        </td>
+                        <td>
+                            <input #selectedLastname [value]="journal.lastname" class="form-control modal-textboxes" type="text" placeholder="Efternavn" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="modal-labels">Info</label>
+                        </td>
+                        <td>
+                            <textarea id="journaltxtDescription" #selectedInfo [value]="journal.info" class="form-control modal-textboxes" rows="5" placeholder="Info..."></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <!--<ngb-alert [dismissible]="false" [hidden]="isHidden">
+                    <strong id="JournalModalAlert">Udfyld venligst mindst et felt og en hændelse</strong>
+                </ngb-alert>-->
+                <button class="btn btn-success btnOkJournalModal" (click)="btnOk(selectedReceptionId.value, selectedCpr.value,
+                        selectedName.value, selectedMiddleName.value, selectedLastname.value, selectedInfo.value)" data-dismiss="modal" [disabled]="isDisabled">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    OK
+                </button>
+                <button class="btn btn-warning btn-cancelModal" data-dismiss="modal" [disabled]="isDisabled">
+                    <span class="glyphicon glyphicon-remove-sign"></span>
+                    Annuller
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

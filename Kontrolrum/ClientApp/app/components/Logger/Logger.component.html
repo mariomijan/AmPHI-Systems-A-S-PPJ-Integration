@@ -1,0 +1,42 @@
+﻿<style>
+    .table-fixed tbody {
+        height: 187px;
+        overflow-y: scroll;
+        width: 48.3%;
+        position: absolute;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+    thead {
+        width: 100%;
+    }
+
+    .table-fixed thead tr th {
+        border-bottom: none;
+    }
+</style>
+<div id="Logger-box">
+    <label>Logger</label>
+    <table class="table table-hover table-striped table-fixed">
+        <thead style="border-right: 15px solid lightgray;background-color: lightgrey; font-weight: 700;">
+            <tr>
+                <th class="col-xs-4">Tid</th>
+                <th class="col-xs-6">Info</th>
+                <th class="col-xs-3">Hændelse</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let logger of loggerManager.loggerlist" [style.background-color]="logger.success == 1 ? 'lightgreen' : 'red'" [style.color]="logger.success == 0 ? 'white' : ''">
+                <!-- Change the datetime format here -->
+                <td class="col-xs-4">{{logger.time | date:'dd-MM-yyyy HH:mm:ss'}}</td>&nbsp;
+                <td class="col-xs-6">{{logger.logMessage}}</td>
+                <td class="col-xs-3">{{logger.incident.id}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div> 

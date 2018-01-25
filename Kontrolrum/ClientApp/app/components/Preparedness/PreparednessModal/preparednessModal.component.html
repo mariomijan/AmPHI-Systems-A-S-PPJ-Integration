@@ -1,0 +1,67 @@
+﻿<div class="modal fade" id="Modal1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-mg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Tilføj beredskab til hændelse</h4>
+            </div>
+            <div class="modal-body">
+                <label id="lblincidentId-preparedness">Hændelse-ID: {{incidentManager.incidentId}}</label><br /><br />
+
+                <div id="vehicleType-DropDown">
+                    <label class="dropDownlabels">Vælg Beredskabs Type</label><br />
+                    <select class="form-control" (ngModelChange)="theSelectedType($event)" id="VehicleTypeDropDown" [(ngModel)]="selectedType">
+                        <option *ngFor="let type of preparednessManager.vehicletypeList" [ngValue]="type">
+                            {{type.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <div id="emergencycode-dropDown">
+                    <label class="dropDownlabels">Vælg Udrykningskode</label><br />
+                    <select class="form-control" id="EmergencyCodeDropDown" [(ngModel)]="selectedCode">
+                        <option *ngFor="let eCode of preparednessManager.ecodeList" [ngValue]="eCode">
+                            {{eCode.code}}
+                        </option>
+                    </select>
+                </div>
+                
+                <div id="vehicle-DropDown">
+                    <label class="dropDownlabels">Vælg Beredskab</label><br />
+                    <select class="form-control" id="VehicleDropDown" [(ngModel)]="selectedVehicle">
+                        <option *ngFor="let vehicle of preparednessManager.vehicleList" [style.background-color]="vehicle.status.id > 3 ? 'yellow' : ''"  [ngValue]="vehicle">
+                            {{vehicle.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <div id="status-DropDown">
+                    <label class="dropDownlabels" id="statusModallbls">Vælg Status</label><br />
+                    <select class="form-control" id="StatusDropDown" [(ngModel)]="selectedStatus">
+                        <option *ngFor="let status of preparednessManager.statusList" [ngValue]="status">
+                            {{status.meaning}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer preparednessFooter" style="border-top: none; bottom: 0;">
+                <ngb-alert id="preparednessModalAlert" [dismissible]="false" [hidden]="isHidden">
+                    <strong style="position: relative; right: 110px;">Beredskab og udrykningskode skal udfyldes</strong>
+                </ngb-alert>
+                <button id="btnOkPreparedness" type="button" class="btn btn-success btnModal" (click)="btnOk()">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    OK
+                </button>
+                <button class="btn btn-warning btn-cancelModal" (click)="btnCancel()">
+                    <span class="glyphicon glyphicon-remove-sign"></span>
+                    Annuller
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden button to close the modal -->
+<button id="closeModal" #closeModal [hidden]="true"
+        data-toggle="modal" data-target="#Modal1"></button>
+

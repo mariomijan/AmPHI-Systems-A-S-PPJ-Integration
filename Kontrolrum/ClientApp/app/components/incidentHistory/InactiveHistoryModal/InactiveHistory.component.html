@@ -1,0 +1,60 @@
+﻿<style>
+    .table-fixed tbody {
+        height: 120%;
+        overflow-y: scroll;
+        width: 100%;
+        position: absolute;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+
+</style>
+<div class="modal fade" id="Modal3" role="dialog" data-backdrop="static" data-keyboard="true">
+    <div class="modal-dialog modal-mg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div id="InactiveHistory-box">
+                    <p><label>Inaktive Hændelser</label></p>
+
+                    <table id="inactive-box" class="table table-hover table-fixed">
+                        <thead id="inactiveModal-table"style="border-right: 22px solid lightgray; border-left: 4px solid lightgray;">
+                            <tr>
+                                <th class="col-xs-1">ID</th>
+                                <th class="col-xs-3">Adresse</th>
+                                <th class="col-xs-2">Nummer</th>
+                                <th class="col-xs-1">PostNr</th>
+                                <th class="col-xs-2">By</th>
+                                <th class="col-xs-4">Beskrivelse</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="clickableCells" *ngFor="let incident of incidentManager.inactivelist; let rowIndex = index"
+                                (click)="setClickedRow(rowIndex); getIncident(incident)" [class.active]="rowIndex == selectedRow">
+                                <td class="col-xs-1">{{incident.id}}</td>
+                                <td class="col-xs-3">{{incident.address}}</td>
+                                <td class="col-xs-2">{{incident.number}}</td>
+                                <td class="col-xs-1">{{incident.postNr}}</td>
+                                <td class="col-xs-2">{{incident.city}}</td>
+                                <td class="col-xs-4">{{incident.description}}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer preparednessFooter" style="border-top: none; bottom: 0;">
+                   
+                    <button class="btn btn-warning btn-cancelModal " data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove-sign"></span>
+                        Luk vindue
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class='container-fluid'>
+    <div id="wrapper-box">
+        <!--<a routerLink="/admin">Admin</a>-->
+        <div class="panel panel-default" style="width:50%; float:left;">
+            <div class="panel-body" style="width:200%; float:left;">
+                <incident-component (onRemoveIncidentJournalPreparednessBtnIsDisabled)="AddJournalPreparednessBtnIsDisabledAndRemoveIncident($event)" 
+                                    (onIncidentUpdatedBtnIsDisabled)="DisableIncidentHistoryBtns($event)"
+                                    [isDisabled]="addJournalPreparednessBtnisDisabledAndRemoveIncidentField" [incident]="selectedIncident"
+                                    (onRemoveIncidentBtn)="RemoveIncident($event)"></incident-component>
+                
+                <incidentHistory-component (onAddJournalPreparednessBtnIsDisabled)="AddJournalPreparednessBtnIsDisabledAndRemoveIncident($event)" 
+                                           (onIncidentSelected)="IncidentSelected($event)"
+                                           (onSelectedRow)="RowSelected($event)" [isDisabled]="disableIncidentHistoryBtns" (onInActiveIncidentsSelected)="AddJournalPreparednessBtnIsDisabledAndRemoveIncident($event)">
+                                                    
+                </incidentHistory-component>
+                    
+                <journal-component (onJournalSelected)="JournalSelected($event)" [isDisabled]="addJournalPreparednessBtnisDisabledAndRemoveIncidentField" [incident]="selectedIncident">
+                </journal-component>
+                <updateJournal-component [journal]="selectedJournal" [theSelectedReception]="selectedReception"></updateJournal-component>
+                <preparednessUpdateModal-component [preparedness]="selectedPreparedness" [theSelectedStatus]="selectedStatus" [theSelectedEmergencyCode]="selectedCode" [theSelectedVehicle]="selectedVehicle"></preparednessUpdateModal-component>
+                <preparedness-component (onPreparednessSelected)="PreparednessSelected($event)" [isDisabledRemove]="removeIncidentBtnisDisabled" [isDisabled]="addJournalPreparednessBtnisDisabledAndRemoveIncidentField"></preparedness-component>
+                <Logger-component></Logger-component>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

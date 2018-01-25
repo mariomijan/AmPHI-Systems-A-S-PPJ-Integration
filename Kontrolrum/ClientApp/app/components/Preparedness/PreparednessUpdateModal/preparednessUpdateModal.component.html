@@ -1,0 +1,49 @@
+﻿<div class="modal fade" id="preparednessUpdateModal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-mg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Rediger beredskab (Vogn-Nr: {{theSelectedVehicle.name}})</h4>
+            </div>
+            <div class="modal-body">
+                <label class="modal-labels" style="margin-left:-0px;">Hændelse-ID: {{incidentManager.incidentId}}</label>
+                
+                <div id="emergencycode-dropDown" style="margin-top:50px;">
+                    <label class="dropDownlabels">Vælg Udrykningskode</label><br />
+                    <select #selectedCodeId class="form-control" id="EmergencyCodeDropDown">
+                        <option *ngFor="let code of preparednessManager.ecodeList" [selected]="code.id == theSelectedEmergencyCode.id" [value]="code.id">
+                            {{code.code}}
+                        </option>
+                    </select>
+                </div>
+                <div id="status-updateModalDropDown" style="margin-top:20px;">
+                    <label class="dropDownlabels" id="statusModallbls">Vælg Status</label><br />
+                    <select #selectedStatusId class="form-control" id="StatusDropDown">
+                        <option *ngIf="theSelectedStatus.id == null"></option>
+                        <option *ngFor="let status of preparednessManager.statusList" [selected]="status.id == theSelectedStatus.id" [value]="status.id">
+                            {{status.meaning}}
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer preparednessUpdateFooter" style="border-top: none; bottom: 0;">
+                <ngb-alert id="preparednessModalAlert" [dismissible]="false" [hidden]="isHidden">
+                    <strong style="position: relative; right: 160px;">Udrykningskode skal udfyldes</strong>
+                </ngb-alert>
+                <button id="btnOkPreparedness" type="button" class="btn btn-success btnModal" (click)="btnOk(selectedCodeId.value, selectedStatusId.value)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    OK
+                </button>
+                <button class="btn btn-warning btn-cancelModal" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove-sign"></span>
+                    Annuller
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden button to close the modal -->
+<button id="closeModal" #closeModal [hidden]="true"
+        data-toggle="modal" data-target="#preparednessUpdateModal"></button>
+
+

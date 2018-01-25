@@ -1,0 +1,359 @@
+﻿body {
+    background-color:whitesmoke;
+}
+/*All*/
+#wrapper-box {
+    width: 100%;
+    height: 100%;
+    margin-top: 3%;
+    position: relative;
+}
+
+/*Incident*/
+#incident-box {
+    width: 49.9%;
+    height: 200px;
+    float: left;
+    margin-top: -2px;
+    margin-left: -3.5px;  
+}
+
+#close-incident {
+    float: right;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+#txtAddress {
+    width: 45%;
+    float: left;
+}
+
+#addressValidation {
+    position: absolute;
+    margin-top: 33px;
+} 
+
+#NumberValidation {
+    position: absolute;
+    margin-top: 33px;
+    margin-left: 210px;
+}
+
+#PostValidation {
+    position: absolute;
+    margin-top: 33px;
+    margin-left: 365px;
+}
+
+#CityValidation {
+    position: absolute;
+    margin-top: 33px;
+    margin-left: 520px;
+}
+
+#txtNumber {
+    width: 7%;
+    float: left;
+    margin-left: 3px;
+}
+
+#txtPost {
+    width: 13%;
+    float: left;
+    margin-left: 3px;
+}
+
+#txtCity {
+    width: 33.1%;
+    float: left;
+    margin-left: 3px;
+}
+
+#txtDescription {
+    float: left;
+    margin-top: 0.5%;
+    width: 99.2%;
+    min-height: 111px;
+    max-height: 111px;
+    max-width: 99.2%;
+}
+
+#btnSaveIncident {
+    float: right;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+#btn-newIncident {
+    float: left;
+    margin-top: -55px;
+    margin-left: -15px;
+}
+/*Incident History*/
+#incidentHistory-box {
+    width: 49.9%;
+    height: 500px;
+    float: right;
+    margin-right: -10px;
+    margin-top: -15.4px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+#btn-inactiveHistory {
+    float:right;
+    margin-top: -40px;
+}
+
+#inactiveModal-table {
+    background-color: lightgray;
+    /*font-weight: 700;*/
+
+}
+#InactiveHistory-box{
+    position:relative;
+    height:300px;
+}
+/*#inactive-box{
+    float:left
+}*/
+
+/*#Modal3 {
+    height:100%;
+    float:left;
+}*/
+/*Journal*/
+#journal-box {
+    width: 49.5%;
+    height: 255px;
+    float: left;
+    margin-top: 20px;
+    margin-left: -3.5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+#journal-table {
+    margin-top: 10px;
+}
+
+/*Journal modal*/
+.modal-labels {
+    float: left;
+    margin-left: 20px;
+    margin: 10px 0px 0px 20px;
+}
+
+.modal-textboxes {
+    float: left;
+    margin-left: 80px;
+    max-width: 380px;
+    min-width: 380px;
+    margin: 8px 0px 0px 50px;
+}
+
+#journaltxtDescription {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+.btnOkJournalModal {
+    float: left;
+    margin-left: 207px;
+    width: 80px;
+}
+
+#add-journal-label {
+    float: left;
+}
+
+#JournalModalAlert {
+    position: relative;
+    right: 103px;
+    font-size: 15px;
+}
+
+/*Incident history and Journal tables*/
+.clickableCells {
+    cursor: pointer;
+}
+
+.table tr.active td {
+    background-color: darkgray !important;
+    color: white;
+}
+
+#incident-history-table thead {
+    background-color: lightgray;
+    font-weight: 700;
+}
+
+#journal-table thead {
+    background-color: lightgray;
+    font-weight: 700;
+}
+
+
+/*Preparedness */
+#preparedness-box {
+    width: 49.5%;
+    height: 255px;
+    margin-top: 35px;
+    float: left;
+    margin-left: -3.5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+#preparedness-table thead {
+    background-color: lightgrey;
+    font-weight: 700;
+}
+
+#preparedness-table {
+    margin-top: 10px;   
+}
+
+#preparednessModalAlert {
+    float: left;
+    width: 100%;
+    font-size: 15px;
+}
+
+#VehicleTypeDropDown {
+    width: 250px;
+    float: left;
+    margin-left: 5px;
+}
+
+#status-DropDown {
+    float:right;
+    margin-top:30px;
+}
+
+#statusModallbls {
+    margin-left: 0px;
+}
+
+#status-updateModalDropDown {
+    float: left;
+}
+
+#StatusDropDown {
+    float: right;
+    width: 250px;
+}
+
+#lblincidentId-preparedness {
+    float: left;
+    margin-left:3px;
+}
+
+#EmergencyCodeDropDown {
+    width: 250px;
+    float: left;
+    margin-left: 5px;
+}
+#VehicleDropDown {
+    width: 250px;
+    float: left;
+    margin-left: 5px;
+}
+
+#emergencycode-dropDown {
+    float: right;
+}
+
+#vehicle-DropDown {
+    float: left;
+    margin-top: 30px;
+}
+
+#vehicleType-DropDown {
+    float: left;
+}
+
+#btnOkPreparedness {
+    float: left;
+    margin-left: 208px;
+}
+
+.dropDownlabels {
+    float: left;
+    margin-left: 5px;
+}
+
+.preparednessFooter {
+    position: relative;
+    margin-top: 180px;
+}
+
+#modtagelse-DropDown {
+    float: left;
+    margin-top: 30px;
+    margin-left: 0px;
+}
+
+#ModtagelseDropDown {
+    width: 250px;
+    float: left;
+    margin-left: 5px;
+}
+
+#modtagelseModallbls {
+    margin-left: 4px;
+}
+
+.preparednessUpdateFooter {
+    margin-top: 130px;
+}
+
+/*Journal and Preparedness*/
+.journal-preparedness-btns {
+    width: 80px;
+}
+
+#preparednessModal-table {
+    width: 50%;
+    float:left;
+    margin-top: 20px;
+}
+
+#preparednessModal-table thead {
+    background-color: lightgrey;
+    font-weight: 700;
+}
+
+
+
+#vehicles-table {
+    float:left;
+    margin-top: 30px;
+}
+
+.btn-cancelModal {
+    float:left;
+    margin-left:41.1%;
+}
+
+/*Logger*/
+#Logger-box {
+    width: 49.8%;
+    height: 255px;
+    border: 1px solid lightgrey;
+    float: right;
+    margin-right: -9px;
+    margin-top: 24px;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+

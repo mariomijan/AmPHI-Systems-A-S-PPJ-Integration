@@ -1,0 +1,70 @@
+﻿<style>
+    .table-fixed tbody {
+        height: 429px;
+        overflow-y: scroll;
+        width: 48.65%;
+        position: absolute;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+    thead {
+        width: 100%;
+    }
+    tbody {
+        float: left;
+    }
+    .table-fixed thead tr th {
+        border-bottom: none;
+    }
+</style>
+
+   
+
+<div id="incidentHistory-box">
+    <span [hidden]="isHidden1"> <label>Aktive Hændelser</label> </span>
+        <span [hidden]="isHidden"> <label>InAktive Hændelser</label> </span>
+
+        <span [hidden]="isHidden">
+            <button [hidden]="isHidden" type="button" id="btn-inactiveHistory" (click)="btnactive()" class="btn btn-outline-primary">
+                <span class="glyphicon glyphicon-list"></span>
+                aktive
+            </button>
+        </span>
+
+        <span [hidden]="isHidden1">
+            <button [hidden]="isHidden1" type="button" id="btn-inactiveHistory" [disabled]="isDisabled" (click)="btnInactive()" class="btn btn-outline-primary">
+                <span class="glyphicon glyphicon-list"></span>
+                Inaktive
+            </button>
+        </span>
+    
+    <table id="incident-history-table" class="table table-hover table-fixed">
+            <thead style="border-right: 22px solid lightgray; border-left: 4px solid lightgray;">
+                <tr>
+                    <th class="col-xs-1">ID</th>
+                    <th class="col-xs-3">Adresse</th>
+                    <th class="col-xs-2">Nummer</th>
+                    <th class="col-xs-1">PostNr</th>
+                    <th class="col-xs-2">By</th>
+                    <th class="col-xs-4">Beskrivelse</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="clickableCells" *ngFor="let incident of incidentManager.incidentlist; let rowIndex = index"
+                    (click)="setClickedRow(rowIndex); getIncident(incident)" [class.active]="rowIndex == selectedRow">
+                    <td class="col-xs-1">{{incident.id}}</td>
+                    <td class="col-xs-3">{{incident.address}}</td>
+                    <td class="col-xs-2">{{incident.number}}</td>
+                    <td class="col-xs-1">{{incident.postNr}}</td>
+                    <td class="col-xs-2">{{incident.city}}</td>
+                    <td class="col-xs-4">{{incident.description}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<Inactivehistory-component #Modal3></Inactivehistory-component>
