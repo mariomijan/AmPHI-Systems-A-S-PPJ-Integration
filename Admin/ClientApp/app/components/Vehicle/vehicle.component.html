@@ -1,0 +1,98 @@
+﻿<div id="vehicle-box" class="col-md-3">
+    <h2>Type Beredskab</h2><br />
+    <table>
+        <tr>
+            <td>
+                <label>Tilføj Type Vogn</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Tilføj Navn Type:</label>
+            </td>
+            <td><input type="text" class="form-control" [(ngModel)]="typeName" /></td>
+        </tr> 
+        <br />
+        <tr>
+            <td>
+                <input name="btnCreateType" class="btn btn-success" type="button" value="Opret/Opdater Type" (click)="createType()" />
+            </td>
+        </tr>
+    </table><br />
+    
+    <table class="table table-hover" *ngFor="let type of manager.typeList">
+        <tr (click)="getClickedTypeName(type)"><td><a>{{type.name}}</a></td></tr>
+    </table><br />
+    
+    <input type="button" value="Fjern Type" class="btn btn-danger" (click)="removeType()" />
+    <label>{{typeRemove}}</label>
+</div>
+
+<div id="addVehicle-box" class="col-md-3">
+    <h2>Vogn Beredskab</h2>
+    <table>
+        <tr>
+            <td>
+                <select class="form-control" [(ngModel)]="selectedType">
+                    <option *ngFor="let type of manager.typeList" [ngValue]="type">
+                        {{type.name}}
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <br />
+        <tr>
+            <td><label>Tilføj vogn til type:</label></td>
+            <td><input type="text" class="form-control" name="name" [(ngModel)]="vehicleName" /></td>
+        </tr>
+        <br />
+        <tr><td><input type="button" name="name" class="btn btn-success" value="Opret/Opdater Vogn" (click)="createVehicle()" /></td></tr>
+    </table><br />
+
+    <table class="table table-hover" *ngFor="let vehicle of manager.vehicleList">
+        <tr (click)="getVehicle(vehicle)"><td><a>{{vehicle.name}}</a></td></tr>
+    </table><br />
+
+    <input type="button" value="Fjern Vogn"  class="btn btn-danger"  (click)="removeVehicle()"/>
+    <label>{{vehicleRemove}}</label>
+
+</div>
+
+<div id="emergencyCode-box" class="col-md-3">
+    <h2>Udrykningskode</h2><br />
+    <table>
+        <tr>
+            <td><label>Tilføj udrykningskode</label></td>
+            <td><input type="text" class="form-control" [(ngModel)]="emergencyCodeName" /></td>
+        </tr>
+        <br />
+        <tr><td><input type="button" name="name" class="btn btn-success" value="Opret/Opdater udrykingskode" (click)="createEmergencyCode()" /></td></tr>
+    </table><br />
+    
+    <table class="table table-hover" *ngFor="let code of manager.emergencyCodeList">
+        <tr (click)="getEmergencyCode(code)"><td><a>{{code.code}}</a></td></tr>
+    </table><br />
+    
+    <input type="button" value="Fjern Udrykningskode"  class="btn btn-danger"  (click)="removeEmergencyCode()" />
+    <label>{{codeRemove}}</label>
+</div>
+
+<div id="status-box" class="col-md-3">
+    <h2>Status</h2><br />
+    <table>
+        <tr><td><label>Tilføj Status Kode</label></td>
+        <td><input type="text" class="form-control" [(ngModel)]="statusCode" /></td></tr><br />
+        <tr><td><label>Tilføj Status Betydning</label></td>
+        <td><input type="text" class="form-control" [(ngModel)]="statusMeaning"  /></td></tr><br />
+        <tr><td><input type="button" class="btn btn-success" value="Opret/Opdater Status" (click)="createStatus()" /></td></tr>
+    </table><br />
+
+    <table class="table table-hover" *ngFor="let status of manager.statusList">
+        <tr (click)="getStatus(status)"><td><a>{{status.code}}</a></td>
+        <td><a>{{status.meaning}}</a></tr>
+    </table><br />
+
+    <input type="button" value="Fjern Status"  class="btn btn-danger"  (click)="removeStatus()" />
+    <label>{{statusCode}}</label>
+
+</div>
